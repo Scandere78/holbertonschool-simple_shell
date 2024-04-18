@@ -10,7 +10,7 @@
 // Déclaration de la fonction execute_command
 void execute_command(char *command);
 void tokenize_and_print();
-char *_getline(void)
+char *_getline();
 
-#endif /* SHELL_H */
+#endif
 
