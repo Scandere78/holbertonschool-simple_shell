@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
-
-int main()
+ 
+void tokenize_and_print()
 {
 	char str[] = "hello world, this is a test";
 		char *token;
@@ -13,6 +13,4 @@ int main()
 		printf("%s\n", token);
 		token = strtok(NULL, " ");
 	}
-
-	return (0);
 }
