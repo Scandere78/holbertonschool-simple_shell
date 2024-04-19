@@ -7,10 +7,11 @@
 
 #define MAX_COMMAND_LENGTH 100
 
-// Déclaration de la fonction execute_command
+
 void execute_command(char *command);
 void tokenize_and_print();
 char *_getline();
-
+int path_cmd(char **cmd);
+char *build(char *token, char *value);
 #endif
 
