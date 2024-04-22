@@ -7,13 +7,7 @@
 
 #define MAX_COMMAND_LENGTH 100
 
-
-void execute_command(char *command);
-void tokenize_and_print();
-char *_getline();
-int path_cmd(char **cmd);
-char *build(char *token, char *value);
-void handle_exit_command();
-
+void command_execut(char **args);
+char **split_line(char *line)
 #endif
 
