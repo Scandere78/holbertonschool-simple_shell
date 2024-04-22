@@ -8,40 +8,45 @@ char **split_line(char *line);
 void execute_command(char **args);
 char *get_line(void);
 
-int main()
+int main(void)
 {
-    char *line;
-    char **args;
-    int status;
+	char *line;
+	char **args;
+	int status;
 
-    while (1)
-    {
-        printf("$ ");
-        line = get_line();
-        args = split_line(line);
-        if (args[0] != NULL)
-        {
-            pid_t pid = fork();
-            if (pid == -1)
-            {
-                perror("fork");
-            }
-            else if (pid == 0)
-            {
-                execute_command(args);
-            }
-            else
-            {
-                waitpid(pid, &status, WUNTRACED);
-            }
-            free(line);
-            free(args);
+	while (1)
+	{
+		printf("$ ");
+		line = get_line();
+		args = split_line(line);
 
-            if (!isatty(fileno(stdin)))
-            {
-                break;
-            }
-        }
-    }
-    return 0;
+		if (args[0] != NULL)
+		{
+			pid_t pid = fork();
+
+			if (pid == -1)
+			{
+				perror("fork");
+			}
+
+			else if (pid == 0)
+			{
+				execute_command(args);
+			}
+
+			else
+			{
+				waitpid(pid, &status, WUNTRACED);
+			}
+
+			free(line);
+			free(args);
+
+			if (!isatty(fileno(stdin)))
+			{
+				break;
+			}
+		}
+	}
+	return (0);
 }

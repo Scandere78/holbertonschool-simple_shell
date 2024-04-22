@@ -10,6 +10,7 @@ char **split_line(char *line)
 	int token_count = 0;
 
 	char **tokens = malloc(MAX_ARGUMENTS * sizeof(char *));
+
 	if (!tokens)
 	{
 		perror("Allocation error");
@@ -28,6 +29,6 @@ char **split_line(char *line)
 		token = strtok(NULL, " \t\n");
 	}
 	tokens[token_count] = NULL;
-	return tokens;
+	return (tokens);
 }
 

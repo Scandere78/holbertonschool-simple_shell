@@ -9,5 +9,7 @@
 
 void command_execut(char **args);
 char **split_line(char *line)
+char *get_line(void)
+
 #endif
 
