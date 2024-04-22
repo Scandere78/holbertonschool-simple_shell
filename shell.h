@@ -13,5 +13,7 @@ void tokenize_and_print();
 char *_getline();
 int path_cmd(char **cmd);
 char *build(char *token, char *value);
+void handle_exit_command();
+
 #endif
 

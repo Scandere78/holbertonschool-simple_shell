@@ -1,16 +1,11 @@
 #include <stdio.h>
-#include <string.h>
+#include <unistd.h>
  
-void tokenize_and_print()
+void execute_ls()
 {
-	char str[] = "hello world, this is a test";
-		char *token;
+	char *args[] = {"/bin/ls", NULL};
 
-	token = strtok(str, " ");
+	execvp("/bin/ls", args);
 
-	while (token != NULL)
-	{
-		printf("%s\n", token);
-		token = strtok(NULL, " ");
-	}
+	perror("execvp");
 }
