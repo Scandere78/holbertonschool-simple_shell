@@ -4,7 +4,7 @@
 #include <sys/wait.h>
 #include <string.h>
 #include <errno.h>
-
+#include "shell.h"
 /**
  * Execute a command with the given arguments.
  *
@@ -13,10 +13,18 @@
  */
 void execute_command(char **args, char **envp)
 {
-    if (execve(args[0], args, envp) == -1)
-    {
-        perror("execve");
-        exit(EXIT_FAILURE);
-    }
+	if (args[0][0] != '/')
+	{
+		char *path = get_path(envp, args[0]);
+		if (path == NULL)
+			exit(EXIT_FAILURE);
+		args[0] = path;
+		
+	}
+	if (execve(args[0], args, envp) == -1)
+	{
+		perror("execve");
+		exit(EXIT_FAILURE);
+	}
 }
 

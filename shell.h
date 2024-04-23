@@ -1,16 +1,14 @@
 #ifndef SHELL_H
 #define SHELL_H
-
-
-
-
-
-
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 
 char *get_line(void);
-char *get_line(void);
-char **split_line(char *line);
-void execute_command(char **args);
 void execute_command(char **args, char **envp);
-int main(void);
+char **split_line(char *line);
+char *get_path(char **envp, char *cmd_name);
 #endif
