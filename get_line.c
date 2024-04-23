@@ -1,18 +1,35 @@
-#include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
 
+/**
+ * Obtient une ligne de l'entrée standard.
+ * Retourne NULL en cas d'erreur ou de fin de fichier (EOF).
+ */
 char *get_line(void)
 {
 	char *line = NULL;
 	size_t bufsize = 0;
+	ssize_t nread;
 
-	if (getline(&line, &bufsize, stdin) == -1)
+	nread = getline(&line, &bufsize, stdin);
+	if (nread == -1)
 	{
-		printf("\n");
-		exit(EXIT_SUCCESS);
+		if (feof(stdin))
+		{
+			return (NULL);
+		}
+		else
+		{
+			perror("getline");
+			exit(EXIT_FAILURE);
+		}
 	}
 
-	line[strcspn(line, "\n")] = '\0';
+	if (line[nread - 1] == '\n')
+	{
+		line[nread - 1] = '\0';
+	}
+
 	return (line);
 }
+
