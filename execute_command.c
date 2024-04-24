@@ -17,7 +17,10 @@ void execute_command(char **args, char **envp)
 	{
 		char *path = get_path(envp, args[0]);
 		if (path == NULL)
+		{
+			fprintf(stderr, "Command not found: %s\n", args[0]);
 			exit(EXIT_FAILURE);
+		}
 		args[0] = path;
 		
 	}

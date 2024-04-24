@@ -35,28 +35,24 @@ int main(int argc, char **argv, char **env)
 				free(args);
 				exit(EXIT_SUCCESS);
 			}
-			if (get_path(env, args[0]) == 0 ) {
-				printf("%s: command not found\n", args[0]);
-				continue;
-			}
 
-				pid = fork();
+			pid = fork();
 
-				if (pid == -1)
-				{
-					perror("fork");
-				}
-				else if (pid == 0)
-				{
-					execute_command(args, env);
-				}
-				else
-				{
-					waitpid(pid, &status, WUNTRACED);
-				}
-				free(line);
-				free(args);
+			if (pid == -1)
+			{
+				perror("fork");
 			}
+			else if (pid == 0)
+			{
+				execute_command(args, env);
+			}
+			else
+			{
+				waitpid(pid, &status, WUNTRACED);
+			}
+			free(line);
+			free(args);
 		}
-		return (0);
 	}
+	return (0);
+}
