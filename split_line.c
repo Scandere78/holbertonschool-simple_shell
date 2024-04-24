@@ -6,8 +6,9 @@
 #define MAX_ARGUMENTS 64
 
 /**
- * Sépare une ligne en tokens (mots) en utilisant des espaces comme délimiteurs.
- * Retourne un tableau de chaînes de caractères (tokens).
+ * split_line - Split a line in to token
+ * @line: The line to split
+ * Return: An array of strings containing the words, or NULL on failure
  */
 
 char **split_line(char *line)

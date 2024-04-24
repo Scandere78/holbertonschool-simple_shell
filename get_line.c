@@ -2,8 +2,9 @@
 #include <stdlib.h>
 
 /**
- * Obtient une ligne de l'entrée standard.
- * Retourne NULL en cas d'erreur ou de fin de fichier (EOF).
+ * get_line - Obtains a line from the standard input.
+ *
+ * Return: NULL in case of error or end of file (EOF).
  */
 char *get_line(void)
 {
