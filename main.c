@@ -39,6 +39,11 @@ int main(int argc, char **argv, char **env)
 			{
 				perror("fork");
 			}
+			if (command_exists(args[0]) == 0)
+			{
+				printf("%s: command not found\n", args[0]);
+				continue;
+			}
 			else if (pid == 0)
 			{
 				execute_command(args, env);
