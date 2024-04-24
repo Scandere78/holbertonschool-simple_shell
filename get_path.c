@@ -3,31 +3,37 @@
 #include <unistd.h>
 
 /**
-*_getenv - get a variable environment
-*@env: list of variables environment
-*@name: name of get
-*Return: Variable value of environment or NULL
-*/
-char *_getenv(char **env, const char *name) {
-        int i = 0;
+ *_getenv - get a variable environment
+ *@env: list of variables environment
+ *@name: name of get
+ *Return: Variable value of environment or NULL
+ */
+char *_getenv(char **env, const char *name)
+{
+	int i = 0;
 
-        while (env[i] != NULL) {
-                if (strncmp(env[i], name, strlen(name)) == 0 && (env[i])[strlen(name)] == '=') {
-                        return (env[i] + strlen(name) + 1);
-                }
-                i++;
-        }
-        return (NULL);
+	while (env[i] != NULL)
+	{
+		if (strncmp(env[i], name, strlen(name)) == 0 &&
+				env[i][strlen(name)] == '=')
+		{
+			return (env[i] + strlen(name) + 1);
+		}
+		i++;
+	}
+	return (NULL);
 
 }
 
 
 /**
- *get_path - get a path for execute cmd
- *@env: liste of variable environment
- *@cmd_name: name of command to get
- *Return Variable value of environment_path or NULL
+ * get_path - Get the path for executing a command.
+ * @envp: The list of environment variables.
+ * @cmd_name: The name of the command to locate.
+ *
+ * Return: The path of the command if found in the environment, otherwise NULL.
  */
+
 char *get_path(char **envp, char *cmd_name)
 {
 	char *env_path = _getenv(envp, "PATH");
@@ -38,7 +44,7 @@ char *get_path(char **envp, char *cmd_name)
 	while (token != NULL)
 	{
 		char *full_path = malloc(strlen(token) + strlen(cmd_name) + 2);
-		
+
 		strcpy(full_path, token);
 		strcat(full_path, "/");
 		strcat(full_path, cmd_name);
