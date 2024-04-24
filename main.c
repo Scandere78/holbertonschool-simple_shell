@@ -5,13 +5,16 @@
 #include <string.h>
 #include "shell.h"
 
+
 int main(int argc, char **argv, char **env)
 {
 	char *line;
 	char **args;
 	int status;
+	pid_t pid;
 	(void)argc;
 	(void)argv;
+
 	while (1)
 	{
 		if (isatty(STDIN_FILENO))
@@ -25,7 +28,16 @@ int main(int argc, char **argv, char **env)
 		args = split_line(line);
 		if (args[0] != NULL)
 		{
-			pid_t pid = fork();
+			if (strcmp(args[0], "exit") == 0)
+			{
+				printf("Exiting...\n");
+					free(line);
+					free(args);
+				exit(EXIT_SUCCESS);
+			}
+
+			pid = fork();
+
 			if (pid == -1)
 			{
 				perror("fork");
