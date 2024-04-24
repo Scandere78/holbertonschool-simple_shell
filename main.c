@@ -31,28 +31,32 @@ int main(int argc, char **argv, char **env)
 			if (strcmp(args[0], "exit") == 0)
 			{
 				printf("Exiting...\n");
-					free(line);
-					free(args);
+				free(line);
+				free(args);
 				exit(EXIT_SUCCESS);
 			}
+			if (get_path(env, args[0]) == 0 ) {
+				printf("%s: command not found\n", args[0]);
+				continue;
+			}
 
-			pid = fork();
+				pid = fork();
 
-			if (pid == -1)
-			{
-				perror("fork");
+				if (pid == -1)
+				{
+					perror("fork");
+				}
+				else if (pid == 0)
+				{
+					execute_command(args, env);
+				}
+				else
+				{
+					waitpid(pid, &status, WUNTRACED);
+				}
+				free(line);
+				free(args);
 			}
-			else if (pid == 0)
-			{
-				execute_command(args, env);
-			}
-			else
-			{
-				waitpid(pid, &status, WUNTRACED);
-			}
-			free(line);
-			free(args);
 		}
+		return (0);
 	}
-	return (0);
-}
