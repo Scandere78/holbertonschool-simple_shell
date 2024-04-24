@@ -21,8 +21,12 @@ char **split_line(char *line)
 	if (tokens == NULL)
 	{
 		perror("malloc");
+		exit(EXIT_FAILURE);}
+	if (!tokens)
+	{
+		fprintf(stderr, "Erreur d'allocation\n");
 		exit(EXIT_FAILURE);
-	}
+            }
 
 	token = strtok(line, " ");
 	while (token != NULL && token_count < MAX_ARGUMENTS - 1)
