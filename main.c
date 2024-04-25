@@ -5,7 +5,6 @@
 #include <string.h>
 #include "shell.h"
 
-
 int main(int argc, char **argv, char **env)
 {
 	char *line;
@@ -30,7 +29,6 @@ int main(int argc, char **argv, char **env)
 		{
 			if (strcmp(args[0], "exit") == 0)
 			{
-				printf("Exiting...\n");
 				free(line);
 				free(args);
 				exit(EXIT_SUCCESS);

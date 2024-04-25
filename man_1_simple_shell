@@ -1,0 +1,44 @@
+.TH SHELL 1 "25 April 2024" "Version 1.0" "User Commands"
+
+.SH NAME
+shell \- a simple shell implementation
+
+.SH SYNOPSIS
+.B shell
+
+.SH DESCRIPTION
+The shell utility reads commands from the standard input and executes them.
+
+.PP
+The shell supports the following built-in commands:
+.TP
+.BR exit
+.BR env
+Print the environment variables.
+
+.SH OPTIONS
+None.
+
+.SH SEE ALSO
+.BR access (1),
+.BR execve (1),
+.BR exit (2),
+.BR fflush (2),
+.BR fork (2),
+.BR free (6),
+.BR getline (1),
+.BR isatty (1),
+.BR perror (1),
+.BR printf (1),
+.BR fprintf (2),
+
+.SH AUTHOR
+SCANDERE TEJ (8853@holbertonstudents.com)
+Jordy Moukiana (8808@holbertonstudents.com)
+Kitoko Mayet Loïc Assael (8761@holbertonstudents.com)
+
+.SH BUGS
+No known bugs.
+
+.SH COPYRIGHT
+This is free and unencumbered software released into the public domain.
