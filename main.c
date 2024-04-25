@@ -5,6 +5,19 @@
 #include <string.h>
 #include "shell.h"
 
+/**
+ * Main - function of the program.
+ *
+ * This function executes an infinite loop that reads user commands from
+ * standard input, processes them, and executes them.
+ *
+ * @argc: The number of arguments passed to the program on the command line.
+ * @argv: An array of strings containing the arguments passed to the program
+ * on the command line.
+ * @env: An array of strings representing the environment variables.
+ * Return: 0 on success.
+ */
+
 int main(int argc, char **argv, char **env)
 {
 	char *line;
@@ -46,7 +59,7 @@ int main(int argc, char **argv, char **env)
 			}
 			else
 			{
-				waitpid(pid, &status, WUNTRACED);
+			waitpid(pid, &status, WUNTRACED);
 			}
 			free(line);
 			free(args);
