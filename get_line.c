@@ -16,15 +16,7 @@ char *get_line(void)
 	nread = getline(&line, &bufsize, stdin);
 	if (nread == -1)
 	{
-		if (feof(stdin))
-		{
-			return (NULL);
-		}
-		else
-		{
-			perror("getline");
-			exit(EXIT_FAILURE);
-		}
+		return(NULL);
 	}
 
 	if (line[nread - 1] == '\n')

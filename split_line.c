@@ -21,11 +21,13 @@ char **split_line(char *line)
 	if (tokens == NULL)
 	{
 		perror("malloc");
+		free(tokens);
 		exit(EXIT_FAILURE);
 	}
 	if (!tokens)
 	{
 		fprintf(stderr, "Erreur d'allocation\n");
+		free(tokens);
 		exit(EXIT_FAILURE);
 	}
 
